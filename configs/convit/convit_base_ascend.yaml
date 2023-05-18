@@ -1,0 +1,55 @@
+# system
+mode: 0
+distribute: True
+num_parallel_workers: 8
+
+# dataset
+dataset: 'imagenet'
+data_dir: '/path/to/imagenet'
+shuffle: True
+dataset_download: False
+batch_size: 128
+drop_remainder: True
+
+# augmentation
+image_resize: 224
+scale: [0.08, 1.0]
+ratio: [0.75, 1.333]
+hflip: 0.5
+interpolation: 'bicubic'
+auto_augment: 'autoaug-mstd0.5'
+re_prob: 0.1
+mixup: 0.2
+cutmix: 1.0
+cutmix_prob: 1.0
+crop_pct: 0.93
+color_jitter: 0.4
+
+# model
+model: 'convit_base'
+num_classes: 1000
+pretrained: False
+ckpt_path: ''
+keep_checkpoint_max: 10
+ckpt_save_dir: './ckpt'
+epoch_size: 300
+dataset_sink_mode: True
+amp_level: 'O2'
+
+# loss
+loss: 'CE'
+label_smoothing: 0.1
+
+# lr scheduler
+scheduler: 'warmup_cosine_decay'
+lr: 0.0007
+min_lr: 0.000001
+warmup_epochs: 40
+decay_epochs: 260
+
+# optimizer
+opt: 'adamw'
+weight_decay: 0.1
+loss_scale: 1024
+filter_bias_and_bn: True
+use_nesterov: False

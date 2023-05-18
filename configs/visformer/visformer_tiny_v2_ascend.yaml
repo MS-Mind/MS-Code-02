@@ -1,0 +1,51 @@
+# system
+mode: 0
+distribute: True
+num_parallel_workers: 8
+val_while_train: True
+
+# dataset
+dataset: 'imagenet'
+data_dir: '/path/to/imagenet'
+shuffle: True
+dataset_download: False
+batch_size: 256
+drop_remainder: True
+
+# augmentation
+interpolation: 'bicubic'
+re_prob: 0.25
+mixup: 0.8
+cutmix: 1.0
+cutmix_prob: 1.0
+auto_augment: autoaug
+
+# model
+model: 'visformer_tiny_v2'
+num_classes: 1000
+pretrained: False
+ckpt_path: ''
+keep_checkpoint_max: 10
+ckpt_save_dir: './ckpt'
+epoch_size: 400
+dataset_sink_mode: True
+amp_level: 'O3'
+
+# loss
+loss: 'CE'
+label_smoothing: 0.1
+
+# lr scheduler
+scheduler: 'cosine_decay'
+lr_epoch_stair: True
+lr: 0.001
+min_lr: 0.00002
+warmup_factor: 0.002
+warmup_epochs: 5
+decay_epochs: 295
+
+# optimizer
+opt: 'adamw'
+momentum: 0.9
+weight_decay: 0.05
+loss_scale: 1024
